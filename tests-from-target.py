@@ -8,7 +8,7 @@
 # classes it can find given an output dir and one or more GN targets. For
 # instance this call:
 #
-# $ tests-from-target.py out_linux/Debug components/offline_pages/core/background:unit_tests
+# tests-from-target.py out_linux/Debug components/offline_pages/core/background:unit_tests
 #
 # Generates this output as of today:
 #
@@ -24,7 +24,6 @@
 # For Bash it would be something like this (if you are cool and use cr! ;):
 #
 # cr run components_unittests --gtest_filter=$(tests-from-target.py <OUT_DIR> <GN_TEST_TARGET>)
-#
 
 import sys
 import re
@@ -41,7 +40,7 @@ def GetGnSourcesFor(output_dir, gn_target):
   except subprocess.CalledProcessError as e:
     eprint("GN call failed with error code %s for command: %s"
            % (e.returncode, " ".join(command)))
-    exit(p.returncode)
+    exit(e.returncode)
   gn_sources = output.splitlines()
   return gn_sources
 
